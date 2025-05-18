@@ -1,5 +1,7 @@
 class BlogController < ApplicationController
+  layout "application_blank"
   def index
-    @posts = Post.where("published_date <= ?", Time.zone.now).first
+    @post = Post.where("published_date <= ?", Time.zone.now).order("published_date desc").first
+    puts @post.inspect
   end
 end
